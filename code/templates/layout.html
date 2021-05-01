@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<style>
+			div.main {
+				padding: 5px 50px 75px 50px;
+			}
+	
+			span {
+				vertical-align: middle;
+			 }
+	
+			.brand-logo > span,.brand-logo > img {
+				vertical-align: middle;
+			}
+			.grid-container {
+			display: grid;
+			grid-template-columns: auto auto;
+			padding: 10px;
+		  }
+		  input[type=text]{
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+	
+	input[type=submit] {
+	  width: 20%;
+	  background-color: #6c6ce6;
+	  color: white;
+	  padding: 14px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	
+	input[type=submit]:hover {
+	  background-color: #7a7ad6;
+	}
+	
+		</style>
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>Travel Guide</h1>
+                <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="{{ url_for('medic') }}"><i class="fas fa-briefcase-medical"></i>Medication</a>
+				<a href="{{ url_for('ambulance') }}"><i class="fas fa-clinic-medical"></i>Nearby Hospitals</a>
+				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>

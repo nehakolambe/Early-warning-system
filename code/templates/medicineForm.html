@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+  .navtop {
+    background-color: #2f3947;
+    height: 60px;
+    width: 100%;
+    border: 0;
+}
+.navtop div {
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+.navtop div h1, .navtop div a {
+    display: inline-flex;
+    align-items: center;
+}
+.navtop div h1 {
+    flex: 1;
+    font-size: 24px;
+    padding: 0;
+   margin: 0;
+    color: #eaebed;
+    font-weight: normal;
+}
+.navtop div a {
+    padding: 0 20px;
+    text-decoration: none;
+    color: #c1c4c8;
+    font-weight: bold;
+}
+.navtop div a i {
+    padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+    color: #eaebed;
+}
+</style>
+<body>
+  <nav class="navtop">
+    <div>
+      <h1>Travel Guide</h1>
+              <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+              <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+      <a href="{{ url_for('medic') }}"><i class="fas fa-briefcase-medical"></i>Medication</a>
+      <a href="{{ url_for('ambulance') }}"><i class="fas fa-clinic-medical"></i>Nearby Hospitals</a>
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </div>
+  </nav>
+    <h1 class="jumbotron text-center">Medication</h1>
+    <div class="container">
+        <form method="post">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="mdname">Name</label>
+                <input type="text" class="form-control" name="mdname" id="mdname" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="mdquantity">Avalaible Quantity</label>
+                  <input type="text" class="form-control" name="mdquantity" id="mdquantity" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="mdquantity">Consuming Quantity</label>
+                  <input type="text" class="form-control" name="mdconsquantity" id="mdconsquantity" placeholder="">
+                </div>
+                
+                <div class="col-auto my-1">
+                    <label for="mdunits">Units</label>
+                    <select class="custom-select mr-sm-2" name="mdunits" id="mdunits">
+                      <option selected>Choose</option>
+                      <option value="pill(s)">pill(s)</option>
+                      <option value="drop(s)">drop(s)</option>
+                      <option value="teaspoon(s)">teaspoon(s)</option>
+                    </select>
+                </div>                               
+              </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="form-group">
+                        <label for="mdfrequency">Frequency of intake</label>
+                        <select class="custom-select mr-sm-2" name="mdfrequency" id="mdfrequency">
+                            <option selected>Choose</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Once, every 2 days">Once, every 2 days</option>
+                            <option value="Weekly">Weekly</option>
+                        </select>
+                    </div>
+                </div>                               
+            </div>
+            <div class="msg">{{ msg }}</div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

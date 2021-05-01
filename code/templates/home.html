@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<p>Welcome back, {{ session['username'] }}!</p>
+
+    <script
+      type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?sensor=false"
+    ></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        var mapOptions = {
+          center: new google.maps.LatLng(18.93, 72.82),
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var latlngbounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(
+          document.getElementById("dvMap"),
+          mapOptions
+        );
+        google.maps.event.addListener(map, "click", function (e) {
+          var lati = e.latLng.lat();
+          var longi = e.latLng.lng();
+          document.getElementById("lati").value = lati;
+          document.getElementById("longi").value = longi;
+          // alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+      };
+    </script>
+    
+    <h3>Click on destination you would like to visit</h3>
+    <div id="dvMap" style="width: 700px; height: 500px"></div>
+    <!-- <input type="text" name="Latitude" id="lati" readonly="readonly" />
+      <input type="text" name="Longitude" id="longi" readonly="readonly" /> -->
+    <form method="GET">
+      <input type="text" name="Latitude" id="lati" readonly="readonly" />
+      <input type="text" name="Longitude" id="longi" readonly="readonly" />
+      <input type="submit" value="Submit" />
+    </form>
+    
+    <table class="striped" style="border: darkgray 1px solid;">
+      <thead>
+          <!-- time,temp,mini,maxim,hum,weatherm,weatherd -->
+      <tr>
+          <th style="color: #304100; background-color: #90EE90;">Time</th>
+          <th style="color: #304100; background-color: #90EE90;">Temperature(°F)</th>
+          <th style="color: #304100; background-color: #90EE90;">Minimum Temperature(°F)</th>
+          <th style="color: #304100; background-color: #90EE90;">Maximum Temperature(°F)</th>
+          <th style="color: #304100; background-color: #90EE90;">Humidity(%rh)</th>
+          <th style="color: #304100; background-color: #90EE90;">Weather Group</th>
+          <th style="color: #304100; background-color: #90EE90;">Weather Description</th>
+          <th style="color: #304100; background-color: #90EE90;">Wind Speed(m/s)</th>
+          <th style="color: #304100; background-color: #90EE90;">AQI</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in context['weatherdesc'] %}
+    {% for j in range(24) %}
+      <tr>
+        <td>{{item[0][j]}}</td>
+        <td>{{item[1][j]}}</td>
+        <td>{{item[2][j]}}</td>
+        <td>{{item[3][j]}}</td>
+        <td>{{item[4][j]}}</td>
+        <td>{{item[5][j]}}</td>
+        <td>{{item[6][j]}}</td>
+        <td>{{item[7][j]}}</td>
+        <td>{{item[8][j]}}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+      {% endblock %}

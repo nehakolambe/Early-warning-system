@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Profile Page</h2>
+<div>
+    <p>Your account details are below:</p>
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td>{{ account['username'] }}</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>{{ account['password'] }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ account['email'] }}</td>
+        </tr>
+    </table>
+    <br><br>
+    <center>
+    <form action="delete" method="post">
+    <p>Your medication details are below:</p>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Available Quantity</th>
+            <th>Consume Capacity</th>
+            <th>Units</th>
+            <th>Frequency</th>
+        </tr>
+        <tbody>
+            {% for m in med %}
+                <tr>
+                    <td>{{m['name']}}</td>
+                    <td>{{m['quantity']}}</td>
+                    <td>{{m['consquantity']}}</td>
+                    <td>{{m['unit']}}</td>
+                    <td>{{m['frequency']}}</td>
+                </tr>
+            {% endfor %}
+    </table>
+    <br><br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="mdname">Name of medicine to remove</label>
+                  <input type="text" class="form-control" name="mdname" id="mdname" placeholder="">
+                </div>
+              </div>
+        </div>                               
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Delete</button>
+    </form>
+</center>
+</div>
+{% endblock %}
