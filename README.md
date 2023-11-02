@@ -1,4 +1,4 @@
-# SPIT_Hackathon_21
+# Early warning system
 Early warning system
 Background: Frequent travellers suffering from various medical conditions find
 it difficult to keep watch on their medical routine and either miss dosages, or are
